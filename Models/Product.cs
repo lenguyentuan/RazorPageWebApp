@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Razor_11_Identity.Models
+namespace RazorWebApp.Models
 {
     public class Product
     {

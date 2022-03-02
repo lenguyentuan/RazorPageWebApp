@@ -1,5 +1,5 @@
 ﻿@page
-@using Razor_11_Identity.Models;
+@using RazorWebApp.Models;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -13,6 +13,6 @@
 <ol>
     @foreach (var article in articles)
     {
-            <li>@article.content</li>
+        <li>@article.content</li>
     }
 </ol>

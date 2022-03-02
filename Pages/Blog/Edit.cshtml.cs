@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Razor_11_Identity.Models;
+using RazorWebApp.Models;
 
-namespace Razor_11_Identity.Pages_Blog
+namespace RazorWebApp.Pages_Blog
 {
     public class EditModel : PageModel
     {
-        private readonly Razor_11_Identity.Models.AppDbContext _context;
+        private readonly RazorWebApp.Models.AppDbContext _context;
 
-        public EditModel(Razor_11_Identity.Models.AppDbContext context)
+        public EditModel(RazorWebApp.Models.AppDbContext context)
         {
             _context = context;
         }

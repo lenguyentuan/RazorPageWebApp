@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Razor_11_Identity.Models;
+using RazorWebApp.Models;
 
-namespace Razor_11_Identity
+namespace RazorWebApp
 {
     public class Startup
     {
