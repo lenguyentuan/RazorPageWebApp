@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Razor_09_EntityFramework.Models;
+using RazorWebApp.Models;
 
-namespace Razor_09_EntityFramework.Migrations
+namespace RazorWebApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace Razor_09_EntityFramework.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Razor_09_EntityFramework.Models.Article", b =>
+            modelBuilder.Entity("RazorWebApp.Models.Article", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()

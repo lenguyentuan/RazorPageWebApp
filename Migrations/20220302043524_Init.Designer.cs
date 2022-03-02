@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Razor_09_EntityFramework.Models;
+using RazorWebApp.Models;
 
-namespace Razor_09_EntityFramework.Migrations
+namespace RazorWebApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20220302043524_Init")]
@@ -21,7 +21,7 @@ namespace Razor_09_EntityFramework.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Razor_09_EntityFramework.Models.Article", b =>
+            modelBuilder.Entity("RazorWebApp.Models.Article", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()

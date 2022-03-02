@@ -2,9 +2,9 @@ using System.Data;
 using Microsoft.EntityFrameworkCore;
 
 /*
-dotnet aspnet-codegenerator razorpage -m Razor_09_EntityFramework.Models.Article -dc Razor_09_EntityFramework.Models.AppDbContext -outDir Pages/Blog -udl --referenceScriptLibraries
+dotnet aspnet-codegenerator razorpage -m RazorWebApp.Models.Article -dc RazorWebApp.Models.AppDbContext -outDir Pages/Blog -udl --referenceScriptLibraries
 */
-namespace Razor_09_EntityFramework.Models
+namespace RazorWebApp.Models
 {
     public class AppDbContext : DbContext
     {

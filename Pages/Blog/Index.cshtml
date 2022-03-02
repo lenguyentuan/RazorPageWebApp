@@ -1,5 +1,5 @@
 @page
-@model Razor_09_EntityFramework.Pages_Blog.IndexModel
+@model RazorWebApp.Pages_Blog.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -54,7 +54,7 @@
 </table>
 
 @{
-    var pagingModel = new Razor_09_EntityFramework.Helpers.PageModel()
+    var pagingModel = new RazorWebApp.Helpers.PageModel()
     {
         countpages = Model.countPages,
         currentpage = Model.currentPage,
