@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Razor_09_EntityFramework.Models;
+using Razor_11_Identity.Models;
 
-namespace Razor_09_EntityFramework.Pages
+namespace Razor_11_Identity.Pages
 {
     public class IndexModel : PageModel
     {

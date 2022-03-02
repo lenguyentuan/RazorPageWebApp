@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Bogus;
-using Razor_09_EntityFramework.Models;
+using Razor_11_Identity.Models;
 
-namespace Razor_09_EntityFramework.Migrations
+namespace Razor_11_Identity.Migrations
 {
     public partial class Init : Migration
     {

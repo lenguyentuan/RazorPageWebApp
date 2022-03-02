@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Razor_09_EntityFramework
+namespace Razor_11_Identity
 {
     public class Program
     {

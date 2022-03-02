@@ -1,5 +1,5 @@
 @page
-@model Razor_09_EntityFramework.Pages_Blog.IndexModel
+@model Razor_11_Identity.Pages_Blog.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -34,27 +34,27 @@
     <tbody>
         @foreach (var item in Model.Article)
         {
-            <tr>
-                <td>@(++i)</td>
-                <td>
+                <tr>
+                    <td>@(++i)</td>
+                    <td>
                     @Html.DisplayFor(modelItem => item.title)
-                </td>
-                <td>
+                    </td>
+                    <td>
                     @Html.DisplayFor(modelItem => item.created)
-                </td>
+                    </td>
 
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.id">Sửa</a> |
-                    <a asp-page="./Details" asp-route-id="@item.id">Xem</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.id">Xóa</a>
-                </td>
-            </tr>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.id">Sửa</a> |
+                        <a asp-page="./Details" asp-route-id="@item.id">Xem</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.id">Xóa</a>
+                    </td>
+                </tr>
         }
     </tbody>
 </table>
 
 @{
-    var pagingModel = new Razor_09_EntityFramework.Helpers.PageModel()
+    var pagingModel = new Razor_11_Identity.Helpers.PageModel()
     {
         countpages = Model.countPages,
         currentpage = Model.currentPage,

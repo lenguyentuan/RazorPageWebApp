@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Razor_09_EntityFramework": {
+    "Razor_11_Identity": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

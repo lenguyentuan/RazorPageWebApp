@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Razor_09_EntityFramework.Models
+namespace Razor_11_Identity.Models
 {
     public class Article
     {

@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Razor_09_EntityFramework.Models;
+using Razor_11_Identity.Models;
 
-namespace Razor_09_EntityFramework.Pages_Blog
+namespace Razor_11_Identity.Pages_Blog
 {
     public class CreateModel : PageModel
     {
-        private readonly Razor_09_EntityFramework.Models.AppDbContext _context;
+        private readonly Razor_11_Identity.Models.AppDbContext _context;
 
-        public CreateModel(Razor_09_EntityFramework.Models.AppDbContext context)
+        public CreateModel(Razor_11_Identity.Models.AppDbContext context)
         {
             _context = context;
         }

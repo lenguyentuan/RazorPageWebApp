@@ -1,6 +1,6 @@
 using System;
 
-namespace Razor_09_EntityFramework.Helpers
+namespace Razor_11_Identity.Helpers
 {
     public class PageModel
     {
