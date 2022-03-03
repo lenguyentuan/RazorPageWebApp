@@ -14,6 +14,7 @@ using RazorWebApp.Models;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
+
 namespace RazorWebApp
 {
     public class Startup
@@ -82,6 +83,15 @@ namespace RazorWebApp
                 options.LogoutPath = "/logout";
                 options.AccessDeniedPath = "/AccessDenied";
             });
+
+            services.AddAuthentication()
+                    .AddGoogle(options =>
+                    {
+                        var gConfig = Configuration.GetSection("Google");
+                        options.ClientId = gConfig["ClientId"];
+                        options.ClientSecret = gConfig["ClientSecret"]; ;
+                        options.CallbackPath = "/google-login";
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

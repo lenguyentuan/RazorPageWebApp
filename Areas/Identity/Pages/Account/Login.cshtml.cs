@@ -87,7 +87,6 @@ namespace RazorWebApp.Areas.Identity.Pages.Account
 
                 if (!result.Succeeded)
                 {
-                    Console.WriteLine("abc");
                     var user = await _userManager.FindByEmailAsync(Input.UsernameOrEmail);
                     if (user != null)
                     {
