@@ -46,21 +46,24 @@ namespace RazorWebApp.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "{0} is required")]
+            [EmailAddress(ErrorMessage = "{0} is invalidate")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
-
+            [Required(ErrorMessage = "{0} is required")]
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            [Required(ErrorMessage = "{0} is required")]
+            [StringLength(100, ErrorMessage = "{0} must be at least {2} and at max {1} characters long", MinimumLength = 10)]
+            public string Username { set; get; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
