@@ -31,8 +31,8 @@ namespace RazorWebApp.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "{0} is required")]
+            [EmailAddress(ErrorMessage = "{0} is invalidation")]
             public string Email { get; set; }
         }
 

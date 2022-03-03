@@ -37,7 +37,8 @@ namespace RazorWebApp.Areas.Identity.Pages.Account
             }
             else
             {
-                return RedirectToPage();
+                returnUrl = Url.Content("~/");
+                return LocalRedirect(returnUrl);
             }
         }
     }
