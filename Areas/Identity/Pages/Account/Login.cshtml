@@ -84,6 +84,13 @@
     </div>
 </div>
 
+@{
+    var viewContext = new ViewContext();
+    ViewData["ErrorMessage"] = "abc";
+}
+
+@viewContext.ViewData["ErrorMessage"]
+
 @section Scripts {
 <partial name="_ValidationScriptsPartial" />
 }

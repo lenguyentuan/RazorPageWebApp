@@ -10,5 +10,7 @@ namespace RazorWebApp.Models
         [Column(TypeName = "nvarchar")]
         [StringLength(400)]
         public string homeAddress { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? BirthDate { get; set; }
     }
 }
