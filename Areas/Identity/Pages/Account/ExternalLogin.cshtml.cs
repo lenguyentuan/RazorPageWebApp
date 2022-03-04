@@ -69,8 +69,6 @@ namespace RazorWebApp.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnGetCallbackAsync(string returnUrl = null, string remoteError = null)
         {
-            ErrorMessage = "Can not get infomation from outside services";
-            return RedirectToPage("/login", new { ReturnUrl = returnUrl });
             returnUrl = returnUrl ?? Url.Content("~/");
             if (remoteError != null)
             {
@@ -124,6 +122,41 @@ namespace RazorWebApp.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+                var registeredUser = await _userManager.FindByEmailAsync(Input.Email);
+                string externalEmail = null;
+                AppUser externalEmailUser = null;
+
+                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+                {
+                    externalEmail = info.Principal.FindFirstValue(ClaimTypes.Email);
+                }
+
+                if (externalEmail != null)
+                {
+                    externalEmailUser = await _userManager.FindByEmailAsync(externalEmail);
+                }
+
+                if ((registeredUser != null) && (externalEmail != null))
+                {
+                    if (registeredUser.Id == externalEmailUser.Id)
+                    {
+                        var resultLink = await _userManager.AddLoginAsync(registeredUser, info);
+                        if (resultLink.Succeeded)
+                        {
+                            await _signInManager.SignInAsync(registeredUser, isPersistent: false);
+                            return LocalRedirect(returnUrl);
+                        }
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Can not connect external account with internal account, please log in by another account.");
+                    return Page();
+                }
+
+
+
+
                 var user = new AppUser { UserName = Input.Email, Email = Input.Email };
 
                 var result = await _userManager.CreateAsync(user);

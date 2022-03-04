@@ -90,7 +90,14 @@ namespace RazorWebApp
                         var gConfig = Configuration.GetSection("Google");
                         options.ClientId = gConfig["ClientId"];
                         options.ClientSecret = gConfig["ClientSecret"]; ;
-                        options.CallbackPath = "/google-login";
+                        options.CallbackPath = "/google-login";//default signin-google
+                    })
+                    .AddFacebook(options =>
+                    {
+                        var fConfig = Configuration.GetSection("Facebook");
+                        options.ClientId = fConfig["ClientId"];
+                        options.ClientSecret = fConfig["ClientSecret"];
+                        options.CallbackPath = "/facebook-login";
                     });
         }
 
