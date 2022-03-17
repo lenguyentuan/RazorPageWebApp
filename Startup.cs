@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using RazorWebApp.Models;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Identity.UI.Services;
-
+using RazorWebApp.Services;
 
 namespace RazorWebApp
 {
@@ -99,6 +99,7 @@ namespace RazorWebApp
                         options.ClientSecret = fConfig["ClientSecret"];
                         options.CallbackPath = "/facebook-login";
                     });
+            services.AddSingleton<IdentityErrorDescriber, AppIdentityErrorDescriber>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -137,4 +138,6 @@ namespace RazorWebApp
 
 dotnet aspnet-codegenerator identity -dc RazorWebApp.Models.AppDbContext
 
-*/
+dotnet new page -n Index -o /Areas/Admin/Pages/Role/ -na RazorWebApp.Admin.Role
+
+*/  
