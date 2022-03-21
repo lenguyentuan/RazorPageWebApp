@@ -1,0 +1,41 @@
+﻿@page "/admin/user/add-role/{id}"
+@model RazorWebApp.Admin.User.AddRoleModel
+@{
+    ViewData["Title"] = "Add role";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="RoleNames"></label>
+                @Html.ListBoxFor(m=>m.RoleNames,@Model.AllRoles, new {
+                id = "id-select-roles",
+                @class="w-100"
+                })
+                <span asp-validation-for="RoleNames" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Role</button>
+            <a asp-page="./Index" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+<script src="~/lib/multiple-select/multiple-select.min.js"></script>
+<link rel="stylesheet" href="~/lib/multiple-select/multiple-select.min.css" />
+<script>
+    $("#id-select-roles").multipleSelect({
+        selectAll: false,
+        keepOpen: false,
+        isOpen: false
+    });
+</script>
+}

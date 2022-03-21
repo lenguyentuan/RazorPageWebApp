@@ -1,0 +1,29 @@
+﻿@page "admin/role/create"
+@model RazorWebApp.Admin.Role.CreateModel
+@{
+    ViewData["Title"] = "Create new role";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr>
+
+<div class="row">
+    <div class="col-sm-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label" asp-for="input.Name"></label>
+                <input class="form-control" asp-for="input.Name" />
+                <span class="text-danger" asp-validation-for="input.Name"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Create" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,21 @@
+﻿@page "/admin/role/delete/{id}"
+@model RazorWebApp.Admin.Role.DeleteModel
+@{
+    ViewData["Title"] = "Delete Role";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr>
+
+<div class="row">
+    <div class="col-sm-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="alert alert-danger">Are you sure to delete role <strong>@Model.role.Name </strong>?</div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Yes" />
+                <a asp-page="./Index" class="btn btn-danger">No</a>
+            </div>
+        </form>
+    </div>
+</div>

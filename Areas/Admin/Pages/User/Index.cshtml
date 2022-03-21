@@ -1,0 +1,40 @@
+﻿@page "/admin/user"
+@model RazorWebApp.Admin.User.IndexModel
+@{
+    ViewData["Title"] = "User Manager";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr>
+
+<partial name="_StatusMessage" model="@Model.StatusMessage"></partial>
+
+<table class="table">
+    <tr>
+        <th>User Name</th>
+        <th>Role</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var user in Model.users)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.RoleNames</td>
+            <td>
+                <a asp-page="./SetPassword" class="btn btn-sm btn-primary" asp-route-id="@user.Id">Set Password</a>
+                <a asp-page="./AddRole" class="btn btn-sm btn-danger" asp-route-id="@user.Id">Add Role</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@{
+    var pageModel = new RazorWebApp.Helpers.PageModel()
+    {
+        currentpage = Model.currentPage,
+        countpages = Model.countPages,
+        generateUrl = (int? p) => Url.Page("./Index", new { p = p })
+    };
+}
+
+<partial name="_Paging" model="@pageModel" />
