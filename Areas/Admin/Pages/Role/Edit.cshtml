@@ -20,9 +20,20 @@
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Update" />
-                <a class="btn btn-danger" asp-page="./Index">Back</a>
+                <a class="btn btn-secondary" asp-page="./Index">Back</a>
             </div>
         </form>
+        <hr>
+        <h4>List claims of role <strong>@Model.role.Name</strong></h4>
+        <a asp-page="./AddRoleClaim" asp-route-roleid="@Model.role.Id">+ Add new role claim</a>
+        <ul>
+            @foreach (var claim in Model.Claims)
+            {
+                <li>
+                    <a asp-page="EditRoleClaim" asp-route-claimid="@claim.Id">@claim.ClaimType: @claim.ClaimValue</a>
+                </li>
+            }
+        </ul>
     </div>
 </div>
 

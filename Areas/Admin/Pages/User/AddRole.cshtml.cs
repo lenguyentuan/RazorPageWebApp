@@ -16,10 +16,13 @@ namespace RazorWebApp.Admin.User
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AddRoleModel(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+
+        private readonly AppDbContext _context;
+        public AddRoleModel(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, AppDbContext context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _context = context;
         }
 
 
@@ -33,6 +36,9 @@ namespace RazorWebApp.Admin.User
         public AppUser user { set; get; }
         [TempData]
         public string StatusMessage { set; get; }
+
+        public List<IdentityRoleClaim<string>> ClaimInRole { set; get; }
+        public List<IdentityUserClaim<string>> ClaimInUserRole { set; get; }
         public async Task<IActionResult> OnGetAsync(string id)
         {
 
@@ -41,6 +47,22 @@ namespace RazorWebApp.Admin.User
             if (user == null) return NotFound($"Can not find user has ID: {id}");
             List<string> roles = await _roleManager.Roles.OrderBy(r => r.Name).Select(u => u.Name).ToListAsync();
             AllRoles = new SelectList(roles);
+
+            RoleNames = (await _userManager.GetRolesAsync(user)).ToArray();
+
+            var listRoles = from ur in _context.UserRoles
+                            join r in _context.Roles on ur.RoleId equals r.Id
+                            where ur.UserId == id
+                            select r;
+
+            var claimsRole = from c in _context.RoleClaims
+                             join r in listRoles on c.RoleId equals r.Id
+                             select c;
+            ClaimInRole = claimsRole.ToList();
+
+            var userClaims = from c in _context.UserClaims where c.UserId == id select c;
+
+            ClaimInUserRole = userClaims.ToList();
 
             return Page();
         }
@@ -80,9 +102,6 @@ namespace RazorWebApp.Admin.User
                 });
                 return Page();
             }
-
-
-
 
 
             StatusMessage = $"Add Role for user {user.UserName} successfully";

@@ -24,6 +24,30 @@
             <button type="submit" class="btn btn-primary">Add Role</button>
             <a asp-page="./Index" class="btn btn-secondary">Back</a>
         </form>
+        <hr>
+        <h5>List claims in role</h5>
+        @if (Model.ClaimInRole.Count() > 0)
+        {
+            <ul>
+                @foreach (var claim in Model.ClaimInRole)
+                {
+                    <li>@claim.ClaimType: @claim.ClaimValue</li>
+                }
+            </ul>
+        }
+        <hr>
+        <span>List claims in user</span>
+        <span><a asp-page="./EditUserRoleClaim" asp-page-handler="EditClaim">+ Add new user role claim</a></span>
+        @if (Model.ClaimInUserRole.Count() > 0)
+        {
+            <ul>
+                @foreach (var claim in Model.ClaimInUserRole)
+                {
+                    <li>@claim.ClaimType: @claim.ClaimValue</li>
+                }
+            </ul>
+        }
+
     </div>
 </div>
 

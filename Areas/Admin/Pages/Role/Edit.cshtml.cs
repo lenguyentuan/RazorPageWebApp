@@ -1,16 +1,20 @@
+using System.Security.Claims;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace RazorWebApp.Admin.Role
 {
+    [Authorize(Policy = "AllowEditRole")]
     public class EditModel : RolePageModel
     {
         public EditModel(RoleManager<IdentityRole> roleManager, AppDbContext context) : base(roleManager, context)
@@ -27,6 +31,8 @@ namespace RazorWebApp.Admin.Role
         [BindProperty]
         public InputModel input { set; get; }
 
+        public List<IdentityRoleClaim<string>> Claims { set; get; }
+
         public IdentityRole role { set; get; }
         public async Task<IActionResult> OnGet(string id)
         {
@@ -34,6 +40,12 @@ namespace RazorWebApp.Admin.Role
             role = await _roleManager.FindByIdAsync(id);
             if (role == null) return NotFound($"Can not find role in database ");
 
+            input = new InputModel()
+            {
+                Name = role.Name
+            };
+
+            Claims = await _context.RoleClaims.Where(rc => rc.RoleId == role.Id).ToListAsync();
             return Page();
         }
 

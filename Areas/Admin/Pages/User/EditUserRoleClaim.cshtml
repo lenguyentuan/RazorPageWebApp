@@ -1,0 +1,30 @@
+﻿@page "/admin/user/edit-user-role-claim"
+@model RazorWebApp.Admin.User.EditUserRoleClaimModel
+@{
+    ViewData["Title"] = "Edit user role claim";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Input.ClaimType"></label>
+                <input class="form-control" asp-for="Input.ClaimType" />
+                <span asp-validation-for="Input.ClaimType"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Input.ClaimValue"></label>
+                <input class="form-control" asp-for="Input.ClaimValue" />
+                <span asp-validation-for="Input.ClaimValue"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Create" />
+                <a asp-page="./AddRole" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,29 @@ namespace RazorWebApp.Admin.Role
         {
         }
 
-        public List<IdentityRole> roles { set; get; }
+        public class RoleModel : IdentityRole
+        {
+            public string[] Claims { set; get; }
+        }
+
+        public List<RoleModel> roles { set; get; }
         public async Task OnGet()
         {
-            roles = await _roleManager.Roles.ToListAsync();
+            var r = await _roleManager.Roles.ToListAsync();
+            roles = new List<RoleModel>();
+
+            foreach (var _r in r)
+            {
+                var claims = await _roleManager.GetClaimsAsync(_r);
+                var ClaimString = claims.Select(c => c.Type + "=" + c.Value);
+                var rm = new RoleModel()
+                {
+                    Name = _r.Name,
+                    Id = _r.Id,
+                    Claims = ClaimString.ToArray()
+                };
+                roles.Add(rm);
+            }
         }
 
         public void OnPost() => RedirectToPage();
