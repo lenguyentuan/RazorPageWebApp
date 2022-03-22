@@ -14,6 +14,8 @@ using RazorWebApp.Models;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using RazorWebApp.Services;
+using RazorWebApp.Security.Requirements;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RazorWebApp
 {
@@ -111,7 +113,26 @@ namespace RazorWebApp
 
                     policyBuilder.RequireClaim("canedit", "role");
                 });
+
+                options.AddPolicy("InGenz", policyBuilder =>
+                {
+                    policyBuilder.RequireAuthenticatedUser();
+
+                    policyBuilder.Requirements.Add(new GenzRequirement());
+                });
+
+                options.AddPolicy("ShowAdminMenu", policyBuilder =>
+                {
+                    policyBuilder.RequireRole("Admin");
+                });
+
+                options.AddPolicy("CanUpdateArticle", policyBuilder =>
+                {
+                    policyBuilder.Requirements.Add(new ArticleUpdateRequirement());
+                });
             });
+
+            services.AddTransient<IAuthorizationHandler, AppAuthorizationHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
