@@ -36,14 +36,18 @@
             </ul>
         }
         <hr>
-        <span>List claims in user</span>
-        <span><a asp-page="./EditUserRoleClaim" asp-page-handler="EditClaim">+ Add new user role claim</a></span>
+        <h4>List claims in user</h4>
+        <span><a asp-page="./EditUserRoleClaim" asp-page-handler="AddClaim" asp-route-userid="@Model.user.Id">+ Add new
+                user role claim</a></span>
         @if (Model.ClaimInUserRole.Count() > 0)
         {
             <ul>
                 @foreach (var claim in Model.ClaimInUserRole)
                 {
-                    <li>@claim.ClaimType: @claim.ClaimValue</li>
+                    <li>
+                        <a asp-page="./EditUserRoleClaim" asp-page-handler="EditClaim"
+                    asp-route-claimid="@claim.Id">@claim.ClaimType: @claim.ClaimValue</a>
+                    </li>
                 }
             </ul>
         }
