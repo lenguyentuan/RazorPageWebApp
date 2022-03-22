@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,9 +14,11 @@ namespace RazorWebApp.Pages_Blog
     public class EditModel : PageModel
     {
         private readonly RazorWebApp.Models.AppDbContext _context;
+        private readonly IAuthorizationService _authorizationService;
 
-        public EditModel(RazorWebApp.Models.AppDbContext context)
+        public EditModel(RazorWebApp.Models.AppDbContext context, IAuthorizationService authorizationService)
         {
+            _authorizationService = authorizationService;
             _context = context;
         }
 
@@ -51,7 +54,17 @@ namespace RazorWebApp.Pages_Blog
 
             try
             {
-                await _context.SaveChangesAsync();
+                var canupdate = await _authorizationService.AuthorizeAsync(this.User, Article, "CanUpdateArticle");
+                Console.WriteLine(canupdate.Succeeded);
+                if (canupdate.Succeeded)
+                {
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    return Content("Can not update article");
+                }
+
             }
             catch (DbUpdateConcurrencyException)
             {

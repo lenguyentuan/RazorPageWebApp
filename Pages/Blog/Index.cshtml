@@ -8,9 +8,9 @@
 
 <h1>Index</h1>
 
-<form method="get" asp-page="/">
+<form method="post" asp-page="/">
     <label class="form-label">Tìm kiếm</label>
-    <input name="SearchString" type="text" />
+    <input name="searchString" type="text" />
     <button type="submit" class="btn btn-danger">Gửi</button>
 </form>
 
@@ -52,13 +52,11 @@
         }
     </tbody>
 </table>
-
 @{
-    var pagingModel = new RazorWebApp.Helpers.PageModel()
-    {
-        countpages = Model.countPages,
-        currentpage = Model.currentPage,
-        generateUrl = (int? p) => Url.Page("/Blog/Index", new { p = p })
-    };
+    var pageModel = new RazorWebApp.Helpers.PageModel();
+    pageModel.countpages = Model.countPages;
+    pageModel.currentpage = Model.currentPage;
+    pageModel.generateUrl = (int? p) => Url.Page("/Blog/Index", new { p = p });
 }
-<partial name="_Paging" model="@pagingModel" />
+
+<partial name="_Paging" model="@pageModel" />

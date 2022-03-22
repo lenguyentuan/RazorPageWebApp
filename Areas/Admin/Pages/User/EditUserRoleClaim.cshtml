@@ -1,0 +1,41 @@
+﻿@page "/admin/user/edit-user-role-claim/{userid?}"
+@model RazorWebApp.Admin.User.EditUserRoleClaimModel
+@{
+    ViewData["Title"] = "Edit user role claim";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<partial name="_StatusMessage" model="@Model.StatusMessage" />
+
+<div class="row">
+    <div class="col-sm-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Input.ClaimType"></label>
+                <input class="form-control" asp-for="Input.ClaimType" />
+                <span asp-validation-for="Input.ClaimType"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Input.ClaimValue"></label>
+                <input class="form-control" asp-for="Input.ClaimValue" />
+                <span asp-validation-for="Input.ClaimValue"></span>
+            </div>
+            <div class="form-group">
+                @if (Model.userclaim == null)
+                {
+                    <input type="submit" class="btn btn-primary" value="Create" />
+                }
+                else
+                {
+                    <input type="submit" class="btn btn-primary" value="Update" />
+                    <a asp-page="./EditUserRoleClaim" asp-page-handler="DeleteClaim" asp-route-claimid="@Model.userclaim.Id"
+                    class="btn btn-danger">Delete</a>
+                }
+                <a asp-page="./AddRole" class="btn btn-secondary" asp-route-id="@Model.user.Id">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

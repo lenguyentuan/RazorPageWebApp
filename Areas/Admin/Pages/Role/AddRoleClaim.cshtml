@@ -1,0 +1,35 @@
+﻿@page "/admin/role/add-new-role-claim/{roleid}"
+@model RazorWebApp.Admin.Role.AddRoleClaim
+@{
+    ViewData["Title"] = "Create new role claim";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr>
+
+<div class="row">
+    <div class="col-sm-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label" asp-for="input.ClaimType"></label>
+                <input class="form-control" asp-for="input.ClaimType" />
+                <span class="text-danger" asp-validation-for="input.ClaimType"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="input.ClaimValue"></label>
+                <input class="form-control" asp-for="input.ClaimValue" />
+                <span class="text-danger" asp-validation-for="input.ClaimValue"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Add Claim" />
+                <a asp-page="./Edit" asp-route-id="@Model.role.Id" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

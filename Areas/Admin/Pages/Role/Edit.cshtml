@@ -1,0 +1,42 @@
+﻿@page "/admin/role/edit/{id}"
+@model RazorWebApp.Admin.Role.EditModel
+@{
+    ViewData["Title"] = "Edit Role";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr>
+
+<div class="row">
+    <div class="col-sm-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="alert alert-primary">Are you sure to update role <strong> @Model.role.Name</strong></div>
+            <div class="form-group">
+                <label class="control-label" asp-for="input.Name"></label>
+                <input class="form-control" asp-for="input.Name" />
+                <span asp-validation-for="input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Update" />
+                <a class="btn btn-secondary" asp-page="./Index">Back</a>
+            </div>
+        </form>
+        <hr>
+        <h4>List claims of role <strong>@Model.role.Name</strong></h4>
+        <a asp-page="./AddRoleClaim" asp-route-roleid="@Model.role.Id">+ Add new role claim</a>
+        <ul>
+            @foreach (var claim in Model.Claims)
+            {
+                <li>
+                    <a asp-page="EditRoleClaim" asp-route-claimid="@claim.Id">@claim.ClaimType: @claim.ClaimValue</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
