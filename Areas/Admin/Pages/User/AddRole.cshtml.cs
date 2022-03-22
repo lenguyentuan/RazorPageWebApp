@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using RazorWebApp.Models;
+using App.Models;
 
-namespace RazorWebApp.Admin.User
+namespace App.Admin.User
 {
     public class AddRoleModel : PageModel
     {

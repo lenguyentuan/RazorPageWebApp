@@ -1,5 +1,5 @@
 @page
-@model RazorWebApp.Pages_Blog.IndexModel
+@model App.Pages_Blog.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -53,7 +53,7 @@
     </tbody>
 </table>
 @{
-    var pageModel = new RazorWebApp.Helpers.PageModel();
+    var pageModel = new App.Helpers.PageModel();
     pageModel.countpages = Model.countPages;
     pageModel.currentpage = Model.currentPage;
     pageModel.generateUrl = (int? p) => Url.Page("/Blog/Index", new { p = p });

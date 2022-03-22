@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RazorWebApp.Models;
+using App.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace RazorWebApp.Admin.Role
+namespace App.Admin.Role
 {
     [Authorize(Policy = "AllowEditRole")]
     public class EditModel : RolePageModel

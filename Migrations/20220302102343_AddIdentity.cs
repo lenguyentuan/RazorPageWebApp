@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RazorWebApp.Migrations
+namespace App.Migrations
 {
     public partial class AddIdentity : Migration
     {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace RazorWebApp.Services
+namespace App.Services
 {
     public class AppIdentityErrorDescriber : IdentityErrorDescriber
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace RazorWebApp.Helpers
+namespace App.Helpers
 {
     public class PageModel
     {

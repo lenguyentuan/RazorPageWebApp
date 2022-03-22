@@ -1,5 +1,5 @@
 ﻿@page "/admin/user"
-@model RazorWebApp.Admin.User.IndexModel
+@model App.Admin.User.IndexModel
 @{
     ViewData["Title"] = "User Manager";
 }
@@ -29,7 +29,7 @@
 </table>
 
 @{
-    var pageModel = new RazorWebApp.Helpers.PageModel()
+    var pageModel = new App.Helpers.PageModel()
     {
         currentpage = Model.currentPage,
         countpages = Model.countPages,

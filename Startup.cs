@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RazorWebApp.Models;
+using App.Models;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using RazorWebApp.Services;
-using RazorWebApp.Security.Requirements;
+using App.Services;
+using App.Security.Requirements;
 using Microsoft.AspNetCore.Authorization;
 
-namespace RazorWebApp
+namespace App
 {
     public class Startup
     {

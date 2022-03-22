@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 
-namespace RazorWebApp.Security.Requirements
+namespace App.Security.Requirements
 {
     public class ArticleUpdateRequirement : IAuthorizationRequirement
     {

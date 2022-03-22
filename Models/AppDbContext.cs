@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 /*
 dotnet aspnet-codegenerator razorpage -m RazorWebApp.Models.Article -dc RazorWebApp.Models.AppDbContext -outDir Pages/Blog -udl --referenceScriptLibraries
 */
-namespace RazorWebApp.Models
+namespace App.Models
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {

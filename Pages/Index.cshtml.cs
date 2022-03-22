@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using RazorWebApp.Models;
+using App.Models;
 
-namespace RazorWebApp.Pages
+namespace App.Pages
 {
     public class IndexModel : PageModel
     {

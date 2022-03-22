@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using RazorWebApp.Models;
+using App.Models;
 
-namespace RazorWebApp.Pages_Blog
+namespace App.Pages_Blog
 {
     public class EditModel : PageModel
     {
-        private readonly RazorWebApp.Models.AppDbContext _context;
+        private readonly App.Models.AppDbContext _context;
         private readonly IAuthorizationService _authorizationService;
 
-        public EditModel(RazorWebApp.Models.AppDbContext context, IAuthorizationService authorizationService)
+        public EditModel(App.Models.AppDbContext context, IAuthorizationService authorizationService)
         {
             _authorizationService = authorizationService;
             _context = context;
@@ -55,7 +55,6 @@ namespace RazorWebApp.Pages_Blog
             try
             {
                 var canupdate = await _authorizationService.AuthorizeAsync(this.User, Article, "CanUpdateArticle");
-                Console.WriteLine(canupdate.Succeeded);
                 if (canupdate.Succeeded)
                 {
                     await _context.SaveChangesAsync();

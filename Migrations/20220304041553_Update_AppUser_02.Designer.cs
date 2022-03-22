@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RazorWebApp.Models;
+using App.Models;
 
-namespace RazorWebApp.Migrations
+namespace App.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20220304041553_Update_AppUser_02")]

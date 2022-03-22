@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RazorWebApp.Models;
+using App.Models;
 
-namespace RazorWebApp.Admin.Role
+namespace App.Admin.Role
 {
     public class EditRoleClaimModel : RolePageModel
     {
